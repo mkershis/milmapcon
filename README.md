@@ -25,18 +25,21 @@ Basic usage of the library is as follows:
 import milmapcon as mmc
 
 zone_name = "nord_de_guerre"
-grid_ref = "vS015449"   # approximate position of the Arc de Triomphe
+grid_ref = "vS014448"   # approximate position of the Arc de Triomphe
 
 converter = mmc.Converter(zone_name, print_warnings=True)
 
 lat, lon = converter.convert(grid_ref)
-# returns 48.847775, 2.296563
+# returns (48.87381346581111, 2.295301091901731)
 ```
 The library has a very basic utilty to display the coordinates in a [GoogleMaps](https://google.com/maps/search/?api=1&query=48.8747757375431,2.2965631977684913) page using Python's builtin webbrowser library:
 ```python
 mmc.show_map(lat, lon)
 # opens your browser to a Google map page with a pin on these coordinates
 ```
+>
+![screenshot](map_demo.jpg)
+>
 The library also has a function which lists all zones currently supported. More importantly, it lists the exact strings which should be used in specifying the zone (as shown above):
 ```python
 mmc.show_zones()
