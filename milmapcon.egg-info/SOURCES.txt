@@ -8,4 +8,5 @@ milmapcon/milmapcon.py
 milmapcon.egg-info/PKG-INFO
 milmapcon.egg-info/SOURCES.txt
 milmapcon.egg-info/dependency_links.txt
+milmapcon.egg-info/requires.txt
 milmapcon.egg-info/top_level.txt
