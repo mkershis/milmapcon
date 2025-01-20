@@ -5,7 +5,7 @@ with open("README.md","r") as file:
 
 setup(
     name="milmapcon",
-    version="1.0.0",
+    version="1.0.1",
     description="A coordinate converter built on pyproj to convert WWII-era map grid coordinates to latitude & longitude",
     #package_dir={"":"/"},
     packages=find_packages(),

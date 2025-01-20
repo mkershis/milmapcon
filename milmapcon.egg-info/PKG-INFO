@@ -1,6 +1,6 @@
 Metadata-Version: 2.2
 Name: milmapcon
-Version: 1.0.0
+Version: 1.0.1
 Summary: A coordinate converter built on pyproj to convert WWII-era map grid coordinates to latitude & longitude
 Home-page: https://github.com/mkershis/milmapcon
 Author: Matt Kershis
@@ -25,8 +25,8 @@ License: MIT License
         LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
         OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
         SOFTWARE.
-Project-URL: Homepage, https://github.com/mkershis/gridsquare
-Project-URL: Issues, https://github.com/mkershis/gridsquare/issues
+Project-URL: Homepage, https://github.com/mkershis/milmapcon
+Project-URL: Issues, https://github.com/mkershis/milmapcon/issues
 Classifier: Programming Language :: Python :: 3.11
 Classifier: Operating System :: OS Independent
 Requires-Python: >=3.11.7
@@ -62,18 +62,21 @@ Basic usage of the library is as follows:
 import milmapcon as mmc
 
 zone_name = "nord_de_guerre"
-grid_ref = "vS015449"   # approximate position of the Arc de Triomphe
+grid_ref = "vS014448"   # approximate position of the Arc de Triomphe
 
 converter = mmc.Converter(zone_name, print_warnings=True)
 
 lat, lon = converter.convert(grid_ref)
-# returns 48.847775, 2.296563
+# returns (48.87381346581111, 2.295301091901731)
 ```
-The library has a very basic utilty to display the coordinates in a [GoogleMaps](https://google.com/maps/search/?api=1&query=48.8747757375431,2.2965631977684913) page using Python's builtin webbrowser library:
+The library has a very basic utilty to display the coordinates in a [GoogleMaps](https://google.com/maps/search/?api=1&query=48.87381346581111,2.295301091901731) page using Python's builtin webbrowser library:
 ```python
 mmc.show_map(lat, lon)
 # opens your browser to a Google map page with a pin on these coordinates
 ```
+>
+![screenshot](map_demo.jpg)
+>
 The library also has a function which lists all zones currently supported. More importantly, it lists the exact strings which should be used in specifying the zone (as shown above):
 ```python
 mmc.show_zones()
