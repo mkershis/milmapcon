@@ -70,10 +70,11 @@ import milmapcon as mmc
 coord_df    # assume we've populated a dataframe of our grid references
             # and that the grid reference is in the "grid_ref" column
 
-# Option 1 - converting a series of references in the same zone
+# Option 1 - converting a series of references in the same zone. This
+# shows no warnings, but will return "None" if a conversion fails.
 
 zone_name = 'nord_de_guerre'
-converter = mmc.Converter(zone_name)
+converter = mmc.Converter(zone_name, print_warnings=False)
 
 def convert_1(grid_ref):
     '''
@@ -88,7 +89,7 @@ coord_df['lat/lon'] = coord_df['grid_ref'].apply(lambda x: convert_1(x))
 # separate column of the dataframe
 
 def convert_2(zone, grid_ref):
-    converter = mmc.Converter(zone_name)
+    converter = mmc.Converter(zone_name, print_warnings=False)
     lat, lon = converter.convert(grid_ref)
     return f'{lat},{lon}'
 
@@ -115,4 +116,4 @@ In since the calculations are done using the pyproj library, it is possible to a
     * False coordinates (Easting, Northing) of the natural origin
     * The reference ellipsoid (i.e. Bessel, Airy, etc.) or the underlying parameters which define them such as the radius of major/minor axis ($a, b$), inverse flattening ($1/f$), scaling factor ($k_0$)
 
-The data for the supported projections are packaged with the library as a sqlite3 database, but will also be made available on the [GitHub](https://github.com/mkershis/milmapcon) repository for this project in `csv format.
+The data for the supported projections are packaged with the library as a sqlite3 database, but will also be made available on the [GitHub](https://github.com/mkershis/milmapcon) repository for this project in .csv format.
