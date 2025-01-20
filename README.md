@@ -32,7 +32,7 @@ converter = mmc.Converter(zone_name, print_warnings=True)
 lat, lon = converter.convert(grid_ref)
 # returns (48.87381346581111, 2.295301091901731)
 ```
-The library has a very basic utilty to display the coordinates in a [GoogleMaps](https://google.com/maps/search/?api=1&query=48.8747757375431,2.2965631977684913) page using Python's builtin webbrowser library:
+The library has a very basic utilty to display the coordinates in a [GoogleMaps](https://google.com/maps/search/?api=1&query=48.87381346581111,2.295301091901731) page using Python's builtin webbrowser library:
 ```python
 mmc.show_map(lat, lon)
 # opens your browser to a Google map page with a pin on these coordinates
