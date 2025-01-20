@@ -1,0 +1,11 @@
+LICENSE.txt
+README.md
+pyproject.toml
+setup.py
+milmapcon/__init__.py
+milmapcon/gs_data.db
+milmapcon/milmapcon.py
+milmapcon.egg-info/PKG-INFO
+milmapcon.egg-info/SOURCES.txt
+milmapcon.egg-info/dependency_links.txt
+milmapcon.egg-info/top_level.txt
