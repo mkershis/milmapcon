@@ -1,4 +1,4 @@
-﻿zone,proj,lat_0,lon_0,x_0,y_0,a,rf,k_0,ellps
+zone,proj,lat_0,lon_0,x_0,y_0,a,rf,k_0,ellps
 nord_de_guerre,lcca,49.5,7.737208333,600000,300000,6376523,308.64,0.9996256,
 irish_cassini,cass,53.5,-8,199990,249975,,,,airy
 french_lambert_1,lcca,49.5,2.337229,600000,200000,6378249.145,293.465,,
@@ -9,3 +9,4 @@ italy_south,lcca,39.5,14,700000,600000,,,0.99905,bessel
 italy_north,lcca,45.9,14,800000,601000,,,0.99905,bessel
 north_euro_3,lcca,57.5,20,900000,543366,,,0.99905,bessel
 british_cassini,cass,50.6177,-1.19725,500000,100000,,,,airy
+
