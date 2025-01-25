@@ -1,3 +1,4 @@
-# Distribution and packaging
+# Distribution & packaging
 dist/
 *.egg-info/
+

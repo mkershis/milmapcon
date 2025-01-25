@@ -4,7 +4,7 @@ build-backend="setuptools.build_meta"
 
 [project]
 name = "milmapcon"
-version = "1.0.1"
+version = "1.0.2"
 authors = [
     {name="Matt Kershis"}
 ]
@@ -16,7 +16,7 @@ classifiers=[
         "Operating System :: OS Independent",
     ]
 license = {name="MIT", file="LICENSE.txt"}
-
+dependencies = ["pyproj>=3.6.1","certifi>=2024.12.14","pathlib>=1.0.1"]
 [project.urls]
 Homepage = "https://github.com/mkershis/milmapcon"
 Issues = "https://github.com/mkershis/milmapcon/issues"
