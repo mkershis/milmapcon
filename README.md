@@ -98,6 +98,27 @@ coord_df['lat/lon'] = coord_df.apply(
 ```
 Here I chose to return the coordinates to the dataframe as comma-delimited strings which could be parsed out into separate columns, converted back to float, etc. It's also worth noting that this approach may not be highly performant if the dataframe is large, but should handle hundreds (or even thousands) of rows without too much difficulty. The main advantage here is getting the data in a format that can be used in something like `geopandas`, for creating custom maps.
 
+## Other functions
+While it's expected that using the `Converter` class is the most common way of using this library, there are a couple of other useful functions which are available:
+
+1)  `parse_gridsquare(grid_square)`
+2) `EN_from_grid(zone, grid, E_rel, N_rel)`
+
+`parse_gridsquare` takes a raw grid reference string and returns the two-letter grid in proper lower-upper case form, the clean grid string with any errant spaces or special characters removed, and the Easting and Northing relative to the grid square origin. `EN_from_grid` takes the output of `parse_gridsquare` and returns the absolute Easting and Northing in meters. Here is an example:
+
+```python
+import milmapcon as mmc
+
+# note improper capitalization, spaces, and special characters
+raw_grid = ' v  s  014  448 %$ '
+grid, clean_grid_ref, E_rel, N_rel = mmc.parse_gridsquare(raw_grid)
+# >> returns ('vS','vS014448','1400','44800')
+
+E,N = mmc.EN_from_grid('nord_de_guerre', grid, E_rel, N_rel)
+# >> returns (201400, 244800)
+```
+So `parse_gridsquare` could be useful for general data cleaning tasks and `EN_from_grid` could be useful for cases where getting the full Easting and Northing values is desired
+
 ## Other technical considerations
 
 Successful use of this library requires you to know the map zone in which a given grid square reference exists. Fortunately there are a few excellent resources which can help:
