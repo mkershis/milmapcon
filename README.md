@@ -61,7 +61,7 @@ Prints the following list:
 
 Note the `print_warnings` option upon initializing the Converter class. Leaving this set to the default of `True` will provide some indication as to why the specified grid reference could not be converted successfully. However, the conversion function will also return `None` for lat/lon in the event a conversion fails. For example, if you wanted to convert a large number of coordinates, you may wish to suppress the warnings and simply rely on the `None` values to flag coordinates which couldn't be converted.
 
-A practical use of this might be in converting a `pandas` dataframe which contains a series of coordinates (example usage below): 
+A practical use of this might be in converting a series of coordinates within a `pandas` dataframe (example usage below): 
 
 ```python
 import pandas as pd
@@ -129,7 +129,7 @@ Successful use of this library requires you to know the map zone in which a give
 
 ## Adding more maps
 
-In since the calculations are done using the pyproj library, it is possible to add additional zones to this library. Please contact me if you are interested. For each zone additional zone, the following data would be required:
+Since the calculations are done using the pyproj library, it is possible to add additional zones to this library. Please contact me if you are interested. For each zone additional zone, the following data would be required:
 * Understanding of all two-letter (100 km) grids in the zone, and their relation to one another, for the purposes of programming the origins for each grid.
 * Data pertinent for defining the coordinate system in pyproj. Namely:
     * Type of projection (i.e. Cassini Solder, Lambert Conformal, etc.)
