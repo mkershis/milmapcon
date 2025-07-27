@@ -48,7 +48,7 @@ mmc.show_zones()
 Prints the following list:
 >
     1). "british_cassini"
-    2). "french_lambert_1
+    2). "french_lambert_1"
     3). "french_lambert_2"
     4). "french_lambert_3"
     5). "iberian"
@@ -56,7 +56,7 @@ Prints the following list:
     7). "italy_north"
     8). "italy_south"
     9). "nord_de_guerre"
-    10). "north_euro_3
+    10). "north_euro_3"
 >
 
 Note the `print_warnings` option upon initializing the Converter class. Leaving this set to the default of `True` will provide some indication as to why the specified grid reference could not be converted successfully. However, the conversion function will also return `None` for lat/lon in the event a conversion fails. For example, if you wanted to convert a large number of coordinates, you may wish to suppress the warnings and simply rely on the `None` values to flag coordinates which couldn't be converted.
