@@ -156,15 +156,15 @@ def EN_from_grid(zone_name: str, grid: str,x:int,y:int, print_warnings=True) -> 
 
     if (x == y == None) & (x0 == y0 == None):
         if print_warnings:
-            print(f'{clean_grid}: Coordinates are invalid and grid doesn\'t exist in this zone')
+            print('Coordinates are invalid and grid doesn\'t exist in this zone')
         E = N = None
     elif (x == y == None):
         if print_warnings:
-            print(f'{clean_grid}: Grid numbers invalid. Must be 4 or 6 digits long')
+            print('Grid numbers invalid. Must be 4 or 6 digits long')
         E = N = None
     elif (x0 == y0 == None):
         if print_warnings:
-            print(f'{clean_grid}: Two letter grid not valid for this zone')
+            print('Two letter grid not valid for this zone')
         E = N = None
     else:
         x0, y0 = get_origin(zone_name, grid)
