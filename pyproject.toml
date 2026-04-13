@@ -16,7 +16,7 @@ classifiers=[
         "Operating System :: OS Independent",
     ]
 license = {name="MIT", file="LICENSE.txt"}
-dependencies = ["pyproj>=3.6.1","certifi>=2024.12.14","pathlib>=1.0.1"]
+dependencies = ["pyproj>=3.6.1","certifi>=2024.12.14","pathlib>=1.0.1","pytest>=9.0.3"]
 [project.urls]
 Homepage = "https://github.com/mkershis/milmapcon"
 Issues = "https://github.com/mkershis/milmapcon/issues"
