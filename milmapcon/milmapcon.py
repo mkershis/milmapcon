@@ -196,28 +196,6 @@ def get_lat_lon(zone_name: str, crs_dict: dict, E: int, N: int) -> tuple[float, 
         lat, lon = trans.transform(E, N)
     return lat, lon
 
-def grid_search(x0: int,y0: int, zone_name: str) -> str:
-    ''' 
-    Given the zone and origin, identify the correct grid square
-    Return the two-letter grid
-
-    Parameters:
-        x0 (int): Easting of the grid's origin
-        y0 (int): Northing of the grid's origin
-        zone_name (str): Name of the grid
-
-    Return:
-        grid (str): Two-letter grid designation
-    '''
-    with sqlite3.connect(data_dir) as con:
-        cur = con.cursor()
-        grid = cur.execute(f'select grid from origins where x0 ={x0} and y0={y0} and zone="{zone_name}"').fetchone()
-
-    if grid != None:
-        return grid[0]
-    else:
-        return None
-
 def show_map(lat: float, lon: float):
     ''' 
     Takes lat/lon input and searches Google Maps for
