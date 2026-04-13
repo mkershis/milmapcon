@@ -120,18 +120,6 @@ Modules:
             lat (float): Latitude in degrees, decimal format
             lon (float): Longitude in degrees, decimal format
         
-    grid_search(x0: int,y0: int, zone_name: str) -> str:
-    
-        Given the zone and origin, identify the correct grid square
-        Return the two-letter grid
-
-        Parameters:
-            x0 (int): Easting of the grid's origin
-            y0 (int): Northing of the grid's origin
-            zone_name (str): Name of the grid
-
-        Return:
-            grid (str): Two-letter grid designation
 
     show_map(lat: float, lon: float):
    
@@ -151,7 +139,6 @@ from .milmapcon import (
     gen_crs,
     EN_from_grid,
     get_lat_lon,
-    grid_search,
     show_map,
     Converter
 )
