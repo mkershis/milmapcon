@@ -37,3 +37,40 @@ def invalid_origin():
 @pytest.fixture 
 def known_crs_string():
     return '+proj=lcca +lat_0=49.5 +lon_0=7.737208333 +x_0=600000 +y_0=300000 +a=6376523 +rf=308.64 +k_0=0.9996256'
+
+# fixtures for the test_en_grid.py tests
+@pytest.fixture
+def en_grid_good_input():
+    return {
+        'zone':'nord_de_guerre',
+        'grid':'vS',
+        'x':1400,
+        'y':44800
+    }
+
+@pytest.fixture
+def en_grid_bad_grid_and_xy():
+    return {
+        'zone':'nord_de_guerre',
+        'grid':'aB',
+        'x':None,
+        'y':None
+    }
+
+@pytest.fixture 
+def en_grid_bad_nums():
+    return {
+        'zone':'nord_de_guerre',
+        'grid':'vS',
+        'x':None,
+        'y':None
+    }
+
+@pytest.fixture
+def en_grid_bad_grid():
+    return {
+        'zone':'nord_de_guerre',
+        'grid':'aB',
+        'x':1400,
+        'y':44800
+    }
