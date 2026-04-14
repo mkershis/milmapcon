@@ -1,49 +1,20 @@
+import pytest
 import milmapcon as mmc 
 
-def test_good_input(en_grid_good_input):
-    '''Test good input'''
-    zone = en_grid_good_input['zone']
-    grid = en_grid_good_input['grid']
-    x = en_grid_good_input['x']
-    y = en_grid_good_input['y']
+@pytest.mark.parametrize(
+    'label,zone,grid,x,y,E_test,N_test',
+    [
+        ('good_grid_input','nord_de_guerre','vS',1400,44800,201400,244800),
+        ('bad_grid_and_xy','nord_de_guerre','aB',None,None,None,None),
+        ('bad_numbers','nord_de_guerre','vS',None,None,None,None),
+        ('bad_grid_only','nord_de_guerre','aB',1400,44800,None,None)
+
+    ]
+)
+def test_en_from_grid(label, zone, grid, x, y, E_test, N_test):
+    '''Test EN from grid with varying inputs'''
 
     E, N = mmc.EN_from_grid(zone, grid, x, y)
 
-    assert E is not None, 'E should not be None'
-    assert N is not None, 'E should not be None'
-
-def test_bad_grid_and_nums(en_grid_bad_grid_and_xy):
-    '''Test bad grid ref and numbers'''
-    zone = en_grid_bad_grid_and_xy['zone']
-    grid = en_grid_bad_grid_and_xy['grid']
-    x = en_grid_bad_grid_and_xy['x']
-    y = en_grid_bad_grid_and_xy['y']
-    
-    E, N = mmc.EN_from_grid(zone, grid, x, y)
-
-    assert E is None, 'E should be None'
-    assert N is None, 'N should be None'
-
-def test_bad_grid_nums(en_grid_bad_nums):
-    '''Test good zone but bad numbers'''
-    zone = en_grid_bad_nums['zone']
-    grid = en_grid_bad_nums['grid']
-    x = en_grid_bad_nums['x']
-    y = en_grid_bad_nums['y']
-
-    E, N = mmc.EN_from_grid(zone, grid, x, y)
-    
-    assert E is None, 'E should be None'
-    assert N is None, 'N should be None'
-
-def test_bad_grid(en_grid_bad_grid):
-    '''Tests a bad grid'''
-    zone = en_grid_bad_grid['zone']
-    grid = en_grid_bad_grid['grid']
-    x = en_grid_bad_grid['x']
-    y = en_grid_bad_grid['y']
-
-    E, N = mmc.EN_from_grid(zone, grid, x, y)
-
-    assert E is None, 'E should be None'
-    assert N is None, 'N should be None'
+    assert E == E_test, f'Easting for {label} test is incorrect'
+    assert N == N_test, f'Northing for {label} test is incorrect'

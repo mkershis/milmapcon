@@ -1,26 +1,19 @@
+import pytest
 import milmapcon as mmc 
 
-def test_parse_gridsquare_4digit(parse_valid_4digit_grid):
-    '''Tests that a 4-digit grid square is parsed to the right precision'''
+@pytest.mark.parametrize(
+    'label,grid_reference,grid_letters_test,clean_grid_test,x_m_test,y_m_test',
+    [
+        ('valid_four_digit_grid','vS0144','vS','vS0144',1000,44000),
+        ('valid_six_digit_grid','vS014448','vS','vS014448',1400,44800),
+        ('invalid_grid_numbers','vS014','vS','vS014',None,None)
+    ]
+)
+def test_parse_gridsquare(label, grid_reference, grid_letters_test,clean_grid_test, x_m_test, y_m_test):
 
-    grid_letters, clean_grid, x_m, x_y = mmc.parse_gridsquare(parse_valid_4digit_grid)
-    assert grid_letters == "vS"
-    assert clean_grid == "vS0144"
-    assert x_m == 1000
-    assert x_y == 44000
+    grid_letters, clean_grid, x_m, y_m = mmc.parse_gridsquare(grid_reference)
 
-def test_parse_gridsquare_6digit(parse_valid_6digit_grid):
-    '''Tests that a 6-digit grid square is parsed to the right precision'''
-
-    grid_letters, clean_grid, x_m, x_y = mmc.parse_gridsquare(parse_valid_6digit_grid)
-    assert grid_letters == "vS"
-    assert clean_grid == "vS014448"
-    assert x_m == 1400
-    assert x_y == 44800
-
-def test_parse_invalid_grid(parse_invalid_grid_numbers):
-    '''Tests that an invalid numeric reference yields none for x_m and x_y'''
-
-    _, _, x_m, x_y = mmc.parse_gridsquare(parse_invalid_grid_numbers)
-    assert x_m is None 
-    assert x_y is None
+    assert grid_letters == grid_letters_test, f'Grid letters do not match for {grid_reference} in {label} test'
+    assert clean_grid == clean_grid_test, f'Clean grid was not extractedfor {grid_reference} in {label} test'
+    assert x_m == x_m_test, f'x_m values do not match for {grid_reference} in {label} test'
+    assert y_m == y_m_test, f'y_m values do not match for {grid_reference} in {label} test'

@@ -11,7 +11,7 @@ import milmapcon as mmc
     ('italy_south', 'wH510230', 37.00124, 14.57304),
     ('nord_de_guerre', 'wX670439', 48.07308, 9.97967),
     ('north_euro_3', 'rM110670', 57.61976, 15.15452)
-],ids=lambda v: str(v))
+])
 def test_six_digit_precision(zone, grid_square, lat_test, lon_test):
 
     lat, lon = mmc.Converter(zone).convert(grid_square)
@@ -19,8 +19,8 @@ def test_six_digit_precision(zone, grid_square, lat_test, lon_test):
     lat_delta = abs(lat_test - lat)
     lon_delta = abs(lon_test - lon)
 
-    assert lat_delta <= 0.005, f'Latitude delta for {zone} -> {grid_square} = {lat_delta}'
-    assert lon_delta <= 0.005, f'Longitude delta for {zone} -> {grid_square} = {lon_delta}'
+    assert lat_delta <= 0.005, f'Latitude conversion out of spec: Latitude delta for {zone} -> {grid_square} = {lat_delta}'
+    assert lon_delta <= 0.005, f'Longitude conversion out of spec: Longitude delta for {zone} -> {grid_square} = {lon_delta}'
 
 @pytest.mark.parametrize('zone,grid_square,lat_test,lon_test',[
     ('british_cassini', 'wL4586', 52.28782, -0.53772),
@@ -32,7 +32,7 @@ def test_six_digit_precision(zone, grid_square, lat_test, lon_test):
     ('italy_south', 'wH3691', 37.61487, 14.40796),
     ('nord_de_guerre', 'wX7319', 47.84753, 10.04993),
     ('north_euro_3', 'rM2984', 57.7834, 15.43626)
-],ids=lambda v: str(v))
+])
 def test_four_digit_precision(zone, grid_square, lat_test, lon_test):
 
     lat, lon = mmc.Converter(zone).convert(grid_square)
@@ -40,5 +40,5 @@ def test_four_digit_precision(zone, grid_square, lat_test, lon_test):
     lat_delta = abs(lat_test - lat)
     lon_delta = abs(lon_test - lon)
 
-    assert lat_delta <= 0.005, f'Latitude delta for {zone} -> {grid_square} = {lat_delta}'
-    assert lon_delta <= 0.005, f'Longitude delta for {zone} -> {grid_square} = {lon_delta}'
+    assert lat_delta <= 0.005, f'Latitude conversion out of spec: Latitude delta for {zone} -> {grid_square} = {lat_delta}'
+    assert lon_delta <= 0.005, f'Longitude conversion out of spec: Longitude delta for {zone} -> {grid_square} = {lon_delta}'
