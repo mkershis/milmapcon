@@ -19,8 +19,8 @@ def test_six_digit_precision(zone, grid_square, lat_test, lon_test):
     lat_delta = abs(lat_test - lat)
     lon_delta = abs(lon_test - lon)
 
-    assert lat_delta <= 0.005, f'Latitude conversion out of spec: Latitude delta for {zone} -> {grid_square} = {lat_delta}'
-    assert lon_delta <= 0.005, f'Longitude conversion out of spec: Longitude delta for {zone} -> {grid_square} = {lon_delta}'
+    assert lat_delta <= 0.001, f'Latitude conversion out of spec: Latitude delta for {zone} -> {grid_square} = {lat_delta}'
+    assert lon_delta <= 0.001, f'Longitude conversion out of spec: Longitude delta for {zone} -> {grid_square} = {lon_delta}'
 
 @pytest.mark.parametrize('zone,grid_square,lat_test,lon_test',[
     ('british_cassini', 'wL4586', 52.28782, -0.53772),
@@ -40,5 +40,5 @@ def test_four_digit_precision(zone, grid_square, lat_test, lon_test):
     lat_delta = abs(lat_test - lat)
     lon_delta = abs(lon_test - lon)
 
-    assert lat_delta <= 0.005, f'Latitude conversion out of spec: Latitude delta for {zone} -> {grid_square} = {lat_delta}'
-    assert lon_delta <= 0.005, f'Longitude conversion out of spec: Longitude delta for {zone} -> {grid_square} = {lon_delta}'
+    assert lat_delta <= 0.001, f'Latitude conversion out of spec: Latitude delta for {zone} -> {grid_square} = {lat_delta}'
+    assert lon_delta <= 0.001, f'Longitude conversion out of spec: Longitude delta for {zone} -> {grid_square} = {lon_delta}'
