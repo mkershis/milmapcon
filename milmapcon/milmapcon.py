@@ -156,15 +156,15 @@ def EN_from_grid(zone_name: str, grid: str,x:int,y:int, print_warnings=True) -> 
 
     if (x == y == None) & (x0 == y0 == None):
         if print_warnings:
-            print(f'{clean_grid}: Coordinates are invalid and grid doesn\'t exist in this zone')
+            print('Coordinates are invalid and grid doesn\'t exist in this zone')
         E = N = None
     elif (x == y == None):
         if print_warnings:
-            print(f'{clean_grid}: Grid numbers invalid. Must be 4 or 6 digits long')
+            print('Grid numbers invalid. Must be 4 or 6 digits long')
         E = N = None
     elif (x0 == y0 == None):
         if print_warnings:
-            print(f'{clean_grid}: Two letter grid not valid for this zone')
+            print('Two letter grid not valid for this zone')
         E = N = None
     else:
         x0, y0 = get_origin(zone_name, grid)
@@ -195,28 +195,6 @@ def get_lat_lon(zone_name: str, crs_dict: dict, E: int, N: int) -> tuple[float, 
         trans = Transformer.from_crs(from_crs, to_crs)
         lat, lon = trans.transform(E, N)
     return lat, lon
-
-def grid_search(x0: int,y0: int, zone_name: str) -> str:
-    ''' 
-    Given the zone and origin, identify the correct grid square
-    Return the two-letter grid
-
-    Parameters:
-        x0 (int): Easting of the grid's origin
-        y0 (int): Northing of the grid's origin
-        zone_name (str): Name of the grid
-
-    Return:
-        grid (str): Two-letter grid designation
-    '''
-    with sqlite3.connect(data_dir) as con:
-        cur = con.cursor()
-        grid = cur.execute(f'select grid from origins where x0 ={x0} and y0={y0} and zone="{zone_name}"').fetchone()
-
-    if grid != None:
-        return grid[0]
-    else:
-        return None
 
 def show_map(lat: float, lon: float):
     ''' 
