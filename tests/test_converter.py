@@ -1,6 +1,9 @@
 import pytest
 import milmapcon as mmc
 
+LAT_TOLERANCE = 0.001
+LON_TOLERANCE = 0.001
+
 @pytest.mark.parametrize('zone,grid_square,lat_test,lon_test', [
     ('british_cassini', 'wL350780', 52.21665, -0.68511),
     ('irish_cassini', 'iN250800', 53.76897, -7.62082),
@@ -19,8 +22,20 @@ def test_six_digit_precision(zone, grid_square, lat_test, lon_test):
     lat_delta = abs(lat_test - lat)
     lon_delta = abs(lon_test - lon)
 
-    assert lat_delta <= 0.001, f'Latitude conversion out of spec: Latitude delta for {zone} -> {grid_square} = {lat_delta}'
-    assert lon_delta <= 0.001, f'Longitude conversion out of spec: Longitude delta for {zone} -> {grid_square} = {lon_delta}'
+    errors = []
+    try:
+        assert lat_delta <= LAT_TOLERANCE
+    except AssertionError:
+        msg = f'Latitude error > {LAT_TOLERANCE}: Latitude delta for {zone} -> {grid_square} = {lat_delta}'
+        errors.append(msg)
+    try:
+        assert lon_delta <= LON_TOLERANCE
+    except AssertionError:
+        msg = f'Longitude error > {LON_TOLERANCE}: Longitude delta for {zone} -> {grid_square} = {lon_delta}'
+        errors.append(msg)
+    
+    assert not errors, f'Failed for the following cases:\n {"\n".join(errors)}'
+
 
 @pytest.mark.parametrize('zone,grid_square,lat_test,lon_test',[
     ('british_cassini', 'wL4586', 52.28782, -0.53772),
@@ -40,5 +55,16 @@ def test_four_digit_precision(zone, grid_square, lat_test, lon_test):
     lat_delta = abs(lat_test - lat)
     lon_delta = abs(lon_test - lon)
 
-    assert lat_delta <= 0.001, f'Latitude conversion out of spec: Latitude delta for {zone} -> {grid_square} = {lat_delta}'
-    assert lon_delta <= 0.001, f'Longitude conversion out of spec: Longitude delta for {zone} -> {grid_square} = {lon_delta}'
+    errors = []
+    try:
+        assert lat_delta <= LAT_TOLERANCE
+    except AssertionError:
+        msg = f'Latitude error > {LAT_TOLERANCE}: Latitude delta for {zone} -> {grid_square} = {lat_delta}'
+        errors.append(msg)
+    try:
+        assert lon_delta <= LON_TOLERANCE
+    except AssertionError:
+        msg = f'Longitude error > {LON_TOLERANCE}: Longitude delta for {zone} -> {grid_square} = {lon_delta}'
+        errors.append(msg)
+    
+    assert not errors, f'Failed for the following cases:\n {"\n".join(errors)}'
