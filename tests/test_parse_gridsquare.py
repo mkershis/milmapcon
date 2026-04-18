@@ -13,7 +13,4 @@ def test_parse_gridsquare(label, grid_reference, grid_letters_test,clean_grid_te
 
     grid_letters, clean_grid, x_m, y_m = mmc.parse_gridsquare(grid_reference)
 
-    assert grid_letters == grid_letters_test, f'Grid letters do not match for {grid_reference} in {label} test'
-    assert clean_grid == clean_grid_test, f'Clean grid was not extractedfor {grid_reference} in {label} test'
-    assert x_m == x_m_test, f'x_m values do not match for {grid_reference} in {label} test'
-    assert y_m == y_m_test, f'y_m values do not match for {grid_reference} in {label} test'
+    assert (grid_letters, clean_grid, x_m, y_m) == (grid_letters_test, clean_grid_test, x_m_test, y_m_test), f'Test failed for {grid_reference} in {label} test'
