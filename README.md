@@ -138,11 +138,3 @@ Since the calculations are done using the pyproj library, it is possible to add 
     * The reference ellipsoid (i.e. Bessel, Airy, etc.) or the underlying parameters which define them such as the radius of major/minor axis ($a, b$), inverse flattening ($1/f$), scaling factor ($k_0$)
 
 The data for the supported projections are packaged with the library as a sqlite3 database, but will also be made available on the [GitHub](https://github.com/mkershis/milmapcon) repository for this project in .csv format.
-
-## Release notes
-
-- Versions 1.0.0 through 1.0.2 were released in January 2025
-- Version 2.0.0 was released in April 2026. Changes relative to version 1.0
-    - An unused function - `grid-search` - was removed from the code. This ultimately required an upgrade to version 2.0.0
-    - Fixed a bug involving an undefined reference to a variable in the `EN_from_grid` function
-    - While not shipped in the new version, tests have been added to the repo here on GitHub
