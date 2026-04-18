@@ -16,5 +16,4 @@ def test_en_from_grid(label, zone, grid, x, y, E_test, N_test):
 
     E, N = mmc.EN_from_grid(zone, grid, x, y)
 
-    assert E == E_test, f'Easting for {label} test is incorrect'
-    assert N == N_test, f'Northing for {label} test is incorrect'
+    assert (E,N) == (E_test, N_test), f'Easting or Northing is incorrect for {label} test'
